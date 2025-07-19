@@ -14,6 +14,7 @@ public class CheckFloor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.CompareTag("Power")) return;
         GetComponentInParent<Rigidbody2D>().Sleep();
         _jumpScript.spriteRenderer.sprite = _jumpScript.frogSprite.idle;
     }
