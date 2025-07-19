@@ -23,6 +23,7 @@ public class JumpScript : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _checkFloor = GetComponentInChildren<CheckFloor>();
         _checkFloor.enabled = false;
+        _rigidbody2D.Sleep();
     }
 
     private void Start()
@@ -37,8 +38,11 @@ public class JumpScript : MonoBehaviour
 
     private void GetMouse()
     {
-        if (Camera.main && Input.GetMouseButtonDown(0))
+        if (Camera.main && Input.GetMouseButtonDown(0) && !_rigidbody2D.IsAwake())
+        {
             _mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            _rigidbody2D.WakeUp();
+        }
         else
             _mousePos = null;
     }
@@ -55,8 +59,7 @@ public class JumpScript : MonoBehaviour
         }
 
         spriteRenderer.flipX = vector2.x > 0;
-
-        if (!_rigidbody2D.IsAwake()) _rigidbody2D.WakeUp();
+        
         spriteRenderer.sprite = frogSprite.jump;
         _rigidbody2D.AddForce(vector2 * jumpForce, ForceMode2D.Impulse);
         _mousePos = null;
