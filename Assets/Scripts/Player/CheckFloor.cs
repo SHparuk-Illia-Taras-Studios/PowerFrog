@@ -17,5 +17,7 @@ public class CheckFloor : MonoBehaviour
         if (other.CompareTag("Power")) return;
         GetComponentInParent<Rigidbody2D>().Sleep();
         _jumpScript.spriteRenderer.sprite = _jumpScript.frogSprite.idle;
+        _jumpScript.ResetCharge();
+        enabled = false;
     }
 }
