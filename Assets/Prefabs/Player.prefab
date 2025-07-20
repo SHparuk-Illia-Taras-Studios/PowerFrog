@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 6857896054965945803}
   - component: {fileID: 6547985828570971012}
   - component: {fileID: 2625758874432858768}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FloorChecker
   m_TagString: Untagged
   m_Icon: {fileID: 0}

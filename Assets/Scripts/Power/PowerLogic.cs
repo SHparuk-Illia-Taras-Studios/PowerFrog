@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,15 +6,16 @@ using UnityEngine;
 public class PowerLogic : MonoBehaviour
 {
     [SerializeField] private float orbEnergy = 100;
-    private Transform _transform;
-    void Start()
+    [SerializeField] private Transform gfx;
+
+    private void Awake()
     {
-        _transform = gameObject.transform;
+        gfx = GetComponentInChildren<SpriteRenderer>().transform;
     }
 
     void Update()
     {
-        transform.localScale = Vector3.one * (orbEnergy / 100f);
+        gfx.localScale = Vector3.one * (orbEnergy / 100f);
     }
 
     /// <summary>
